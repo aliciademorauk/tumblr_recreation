@@ -1,16 +1,38 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>RecreateTumblr</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>RecreateTumblr</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-  </head>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-  <body>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <%= javascript_importmap_tags %>
+</head>
+
+<body>
+  <div id="sidebar">
+    <ul>
+      <li class="category"><%= link_to "Tumblr", root_path %></li>
+      <li><%= link_to "All Posts", root_path %></li>
+      <li>PLACEHOLDER - Author Page</li>
+    </ul>
+    <p>PLACEHOLDER - Sign In</p>
+  </div>
+
+  <div id="main_content">
+    <div id="header">
+      <p>PLACEHOLDER - Post Feed</p>
+      <div class="button">
+        <button class="button"><%= link_to "Add Post", new_post_path %></button>
+        <button class="button"><%= link_to "PLACEHOLDER - Sign Out", root_path %></button>
+      </div>
+    </div>
+
     <%= yield %>
-  </body>
+
+  </div>
+</body>
 </html>
+
