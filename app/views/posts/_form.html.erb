@@ -1,0 +1,20 @@
+<%= form_with model: @post, data: { turbo: false } do |f| %>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title, maxlength: 75 %>
+    <% if @post.errors[:title].any? %>
+      <div class="error-message">
+        <%= "#{Post.human_attribute_name(:title)} #{@post.errors[:title].first}" %>
+      </div>
+    <% end %>
+  </div>
+  <div>
+    <%= f.label :body%>
+    <%= f.text_area :body, maxlength: 3000 %>
+    <% if @post.errors[:body].any? %>
+      <%= "#{Post.human_attribute_name(:body)} #{@post.errors[:body].first}" %>
+    <% end %>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>
