@@ -1,9 +1,9 @@
 <h1 class="title">
   <%= @post.title %>
 </h1>
-<p class="date">
+<div class="date">
   <%= time_ago_in_words(@post.created_at) %>
-</p>
-<p>
+</div>
+<div>
   <%= @post.body %>
-</p>
+</div>
