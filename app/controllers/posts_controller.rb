@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :get_post, except: [:index, :new, :create]
+
   def index
     @posts = Post.all.order(created_at: :desc)
   end
@@ -19,15 +21,12 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
   end
 
   def edit
-    @post = Post.find(params[:id])
   end
 
   def update
-    @post = Post.find(params[:id])
     if @post.update(post_params)
       flash[:notice] = "Post was successfully updated!"
       redirect_to root_path
@@ -38,9 +37,16 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post.destroy
+    flash[:alert] = "Post was successfully deleted."
+    redirect_to root_path
   end
 
   private
+
+  def get_post
+    @post = Post.find(params[:id])
+  end
 
   def post_params
     params.require(:post).permit(:title, :body)
