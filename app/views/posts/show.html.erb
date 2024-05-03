@@ -1,9 +1,17 @@
-<h1 class="title">
-  <%= @post.title %>
-</h1>
-<div class="date">
-  <%= time_ago_in_words(@post.created_at) %>
-</div>
-<div>
-  <%= @post.body %>
-</div>
+<article>
+  <h1 class="title">
+    <%= @post.title %>
+  </h1>
+  <p class="date">
+    <%= time_ago_in_words(@post.created_at) %>
+  </p>
+  <p class="body">
+    <%= @post.body %>
+  </p>
+  <%= link_to "Edit", edit_post_path(@post), class: "button" %>
+  <%= button_to "Delete", 
+              post_path(@post), 
+              method: :delete, 
+              data: { turbo_confirm: "Are you sure?" }, 
+              class: "button" %>
+</article>
