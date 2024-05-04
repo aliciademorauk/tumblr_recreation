@@ -17,7 +17,7 @@
 </article>
 
 <section id="comments">
-  <% if @comments.any? %>
+  <% if @comments.present? %>
     <p><%= @comments.count %> comment(s).</p>
     <% @comments.each do |comment| %>
       <%= render "comments/comment", comment: comment %>
