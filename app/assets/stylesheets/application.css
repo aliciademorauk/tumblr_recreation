@@ -32,7 +32,7 @@ h1, h2, h3, h4, h5, h6 {
   border-color: #bce8f1;
   color: #31708f;
 }
-.flash.error, .error-message {
+.flash.error {
   background-color: #f2dede;
   border-color: #ebccd1;
   color: #a94442;
@@ -46,6 +46,10 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #dff0d8;
   border-color: #d6e9c6;
   color: #3c763d;
+}
+.error-message {
+	font-style: italic;
+  color: #a94442;
 }
 a {
 	text-decoration: none;
