@@ -17,6 +17,14 @@
 </article>
 
 <section id="comments">
-  <%= render "comments/comments", comments: @comments %>
-  <%= render "comments/form" %>
+  <% if @comments.any? %>
+    <p><%= @comments.count %> comment(s).</p>
+    <% @comments.each do |comment| %>
+      <%= render "comments/comment", comment: comment %>
+    <% end %>
+  <% else %>
+    <p>No one has commented yet.</p>
+  <% end %>
 </section>
+
+<%= render "comments/form" %>
