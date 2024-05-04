@@ -15,3 +15,8 @@
               data: { turbo_confirm: "Are you sure?" }, 
               class: "button" %>
 </article>
+
+<section id="comments">
+  <%= render "comments/comments", comments: @comments %>
+  <%= render "comments/form" %>
+</section>
