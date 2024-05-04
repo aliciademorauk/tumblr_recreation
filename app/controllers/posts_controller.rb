@@ -16,7 +16,7 @@ class PostsController < ApplicationController
       redirect_to root_path
     else
       flash.now[:error] = "There was a problem with your post. Please try again..."
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 

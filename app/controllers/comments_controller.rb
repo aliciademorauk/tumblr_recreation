@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
       redirect_to @post
     else
       flash.now[:error] = "There was a problem with your comment. Please try again..."
-      render "posts/show"
+      render "posts/show", status: :unprocessable_entity 
     end
   end
 
