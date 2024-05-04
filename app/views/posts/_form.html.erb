@@ -2,7 +2,7 @@
   <fieldset>
     <div>
       <%= f.label :title %>
-      <%= f.text_field :title, maxlength: 75 %>
+      <%= f.text_field :title, maxlength: 100 %>
       <% if @post.errors[:title].any? %>
         <div class="error-message">
           <%= "#{Post.human_attribute_name(:title)} #{@post.errors[:title].first}" %>
@@ -13,7 +13,9 @@
       <%= f.label :body%>
       <%= f.text_area :body, maxlength: 3000 %>
       <% if @post.errors[:body].any? %>
-        <%= "#{Post.human_attribute_name(:body)} #{@post.errors[:body].first}" %>
+        <div class="error-message">
+          <%= "#{Post.human_attribute_name(:body)} #{@post.errors[:body].first}" %>
+        </div>
       <% end %>
   </fieldset>
   <%= f.submit %>
