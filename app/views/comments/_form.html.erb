@@ -13,7 +13,9 @@
       <%= f.label :body%>
       <%= f.text_area :body, maxlength: 250 %>
       <% if @comment.errors[:body].any? %>
-        <%= "#{Comment.human_attribute_name(:body)} #{@comment.errors[:body].first}" %>
+        <div class="error-message">
+          <%= "#{Comment.human_attribute_name(:body)} #{@comment.errors[:body].first}" %>
+        </div>
       <% end %>
   </fieldset>
   <%= f.submit %>
