@@ -21,6 +21,8 @@ class PostsController < ApplicationController
   end
 
   def show
+    @comments = @post.comments
+    @comment = Comment.new(post: @post)
   end
 
   def edit
