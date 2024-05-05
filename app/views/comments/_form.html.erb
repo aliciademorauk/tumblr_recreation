@@ -1,22 +1,14 @@
 <%= form_with(model: [@post, @comment], local: true) do |f| %>
+
   <fieldset>
-    <div>
-      <%= f.label :name %>
-      <%= f.text_field :name, maxlength: 100 %>
-      <% if @comment.errors[:name].any? %>
-        <div class="error-message">
-          <%= "#{Comment.human_attribute_name(:name)} #{@comment.errors[:name].first}" %>
-        </div>
-      <% end %>
-    </div>
-    <div>
-      <%= f.label :body%>
-      <%= f.text_area :body, maxlength: 250 %>
-      <% if @comment.errors[:body].any? %>
-        <div class="error-message">
-          <%= "#{Comment.human_attribute_name(:body)} #{@comment.errors[:body].first}" %>
-        </div>
-      <% end %>
+    <%= f.text_area :body, placeholder: "What are you thinking?", maxlength: 250 %>
+    <% if @comment.errors[:body].any? %>
+      <div class="error-message">
+        <%= "#{Comment.human_attribute_name(:body)} #{@comment.errors[:body].first}" %>
+      </div>
+    <% end %>
   </fieldset>
+
   <%= f.submit %>
+
 <% end %>

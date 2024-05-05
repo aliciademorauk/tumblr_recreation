@@ -1,0 +1,49 @@
+<h2>Sign Up</h2>
+
+<%= form_for :user, url: "/users" do |f| %>
+
+  <fieldset>
+    <div>
+      <%= f.label :email, maxlength: 254 %><br />
+      <%= f.email_field :email %>
+      <% if @user.errors[:email].any? %>
+        <div class="error-message">
+          <%= "#{User.human_attribute_name(:email)} #{@user.errors[:email].first}" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div>
+      <%= f.label :username, maxlength: 30 %><br />
+      <%= f.text_field :username %>
+      <% if @user.errors[:username].any? %>
+        <div class="error-message">
+          <%= "#{User.human_attribute_name(:username)} #{@user.errors[:username].first}" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div>
+      <%= f.label :password %>
+      <%= f.password_field :password, maxlength: 100 %>
+      <% if @user.errors[:password].any? %>
+        <div class="error-message">
+          <%= "#{User.human_attribute_name(:password)} #{@user.errors[:password].first}" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div>
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, maxlength: 100 %>
+      <% if @user.errors[:password_confirmation].any? %>
+        <div class="error-message">
+          <%= "#{User.human_attribute_name(:password_confirmation)} #{@user.errors[:password_confirmation].first}" %>
+        </div>
+      <% end %>
+    </div>
+  </fieldset>
+
+  <%= f.submit "Sign Up" %>
+
+<% end %>

@@ -1,8 +1,10 @@
 class CommentsController < ApplicationController
   before_action :get_post
+  before_action :authenticated
 
   def create
     @comment = @post.comments.build(comment_params)
+    @comment.user = current_user
     if @comment.save
       flash[:success] = "Comment was successfully added!"
       redirect_to @post
@@ -30,7 +32,7 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:name, :body)
+    params.require(:comment).permit(:body)
   end
 
 end
