@@ -1,7 +1,14 @@
 <header id="header">
   <nav>
     <p>Post Feed</p>
-    <%= link_to "Add Post", new_post_path, class: "button" %>
-    <%= link_to "Sign Out", root_path, class: "button" %>
+    <% if current_user %>
+      <%= link_to "Add Post", new_post_path, class: "button" %>
+      <%= button_to "Sign Out", 
+                      sign_out_path, 
+                      method: :delete, 
+                      data: { turbo_confirm: "Are you sure?" }, 
+                      class: "button" %>
+      Signed in as: <%= current_user.username %>
+    <% end %>
   </nav>
 </header>

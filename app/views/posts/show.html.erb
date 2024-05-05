@@ -8,12 +8,15 @@
   <p class="body">
     <%= @post.body %>
   </p>
-  <%= link_to "Edit", edit_post_path(@post), class: "button" %>
-  <%= button_to "Delete", 
-              post_path(@post), 
-              method: :delete, 
-              data: { turbo_confirm: "Are you sure?" }, 
-              class: "button" %>
+
+  <% if current_user && user_owns_record?(@post) %>
+    <%= link_to "Edit", edit_post_path(@post), class: "button" %>
+    <%= button_to "Delete", 
+                post_path(@post), 
+                method: :delete, 
+                data: { turbo_confirm: "Are you sure?" }, 
+                class: "button" %>
+  <% end %>
 </article>
 
 <section id="comments">

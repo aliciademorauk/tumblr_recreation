@@ -9,6 +9,10 @@
     <li>
       <%= link_to "About Me", pages_show_path %>
     </li>
-    <li class="sign-in">Sign In</li>
+    <% if !current_user %>
+      <li class="sign-in">
+        <%= link_to "Sign In", sign_in_path %>
+      </li>
+    <% end %>
   </ul>
 </aside>
