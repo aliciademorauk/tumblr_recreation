@@ -1,0 +1,32 @@
+<h2>Sign In</h2>
+
+<%= form_for :user, url: "/sign_in" do |f| %>
+
+  <fieldset>
+    <div>
+      <%= f.label :email %>
+      <%= f.email_field :email, maxlength: 254 %>
+      <% if @user.errors[:email].any? %>
+        <div class="error-message">
+          <%= "#{User.human_attribute_name(:email)} #{@user.errors[:email].first}" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div>
+      <%= f.label :password %>
+      <%= f.password_field :password, maxlength: 100 %>
+       <% if @user.errors[:password].any? %>
+        <div class="error-message">
+          <%= "#{User.human_attribute_name(:password)} #{@user.errors[:password].first}" %>
+        </div>
+      <% end %>
+    </div>
+
+  </fieldset>
+
+  <%= f.submit "Sign In" %>
+
+  <p> New to Tumblr? Create an account: <%= link_to "here", sign_up_path %>.</p>
+
+<% end %>
